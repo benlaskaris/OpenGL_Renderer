@@ -1,4 +1,4 @@
 # OpengGL
 
-First basic lession setting up GLFW and GLEW in Xcode and rendering a triangle on the screen. 
+First basic lesson setting up GLFW and GLEW in Xcode and rendering a triangle on the screen. 
 

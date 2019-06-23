@@ -1,23 +1,14 @@
 #ifndef SCENEMANAGER_H
 #define SCENEMANAGER_H
 
-// #include <iostream>
 #include <vector>
-// #include <unistd.h>
-// #include <cstddef>
-// #include <fstream>
-// #include <sstream>
-
-// #define GLEW_STATIC
-// #include <GL/glew.h>
-// #include <GLFW/glfw3.h>
 
 #include "stone.h"
 #include "shader_program.h"
 
 using std::vector;
-// namespace fs = std::filesystem;
 
+// TODO -- add virutal Drawable Base class? 
 
 class SceneManager {
  private:

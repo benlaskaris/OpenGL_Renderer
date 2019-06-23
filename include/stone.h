@@ -12,6 +12,7 @@
 using std::vector;
 
 
+// TODO -- add create functions and draw the sucker 
 class Stone {
 public:
   GLuint VAO, VBO, EBO;

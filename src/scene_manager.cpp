@@ -1,5 +1,24 @@
 #include "scene_manager.h"
 
+// static void APIENTRY openglCallbackFunction(
+//   GLenum source,
+//   GLenum type,
+//   GLuint id,
+//   GLenum severity,
+//   GLsizei length,
+//   const GLchar* message,
+//   const void* userParam) {
+//   (void)source; (void)type; (void)id;
+//   (void)severity; (void)length; (void)userParam;
+//   fprintf(stderr, "%s\n", message);
+//   if (severity==GL_DEBUG_SEVERITY_HIGH) {
+//     fprintf(stderr, "Aborting...\n");
+//     abort();
+//   }
+// }
+
+
+
 // PRIVATE
 std::string SceneManager::get_shader_dir() {
     char temp[256];
@@ -34,12 +53,17 @@ void SceneManager::init_window() {
     }
 
     glfwMakeContextCurrent( window );
-
+   
     glewExperimental = GL_TRUE;
 
+  
     if ( glewInit() != GLEW_OK ){
         std::cerr << "Failed to init GLEW "<<std::endl;
     }
+
+    glEnable(GL_DEBUG_OUTPUT);
+    
+
 }
 
 void SceneManager::create_shader() {
@@ -56,26 +80,33 @@ void SceneManager::create_shader() {
 
 
 void SceneManager::create_objects() {
-
+  test1.init(0, 0);
+  test1.create_vertices();
+  // stones.push_back(test1);
 }
 
 
 void SceneManager::render_frame() {
+  glUseProgram(stones_shader.program);
+  // for (auto & i : stones) {
+  //   i.draw();
+  // }
+  test1.draw();
+
 
 }
 
 void SceneManager::update_frame() {
-
+  // for (auto & i : stones) {
+  //   i.update();
+  // }
+  test1.update();
 }
 
 void SceneManager::process_input() {
     if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
 }
-
-
-
-
 
 
 

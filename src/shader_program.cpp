@@ -71,9 +71,9 @@ void Shader::create(const char* v_path, const char* f_path) {
       std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
   }
 
-  if (success) {
-      std::cout << "You did it you beautiful bastard" << std::endl;
-  }
+  // if (success) {
+  //     std::cout << "You did it you beautiful bastard" << std::endl;
+  // }
     
   // delete the shaders as they're linked into our program now and no longer necessery
   glDeleteShader(vertex);

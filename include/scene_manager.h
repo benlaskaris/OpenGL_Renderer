@@ -23,13 +23,12 @@ class SceneManager {
   void render_frame();
   void update_frame();
   void process_input();
-
-
-
   
   GLFWwindow* window;
   vector<Stone> stones;
   Shader stones_shader;
+
+  Stone test1;
 
 };
 

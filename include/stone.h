@@ -9,21 +9,24 @@
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 
+#include "drawable.h"
+
 using std::vector;
 
 
 // TODO -- add create functions and draw the sucker 
-class Stone {
+class Stone: public Drawable {
 public:
   GLuint VAO, VBO, EBO;
-  vector<int> vertices, indices;
-
+  vector<float> vertices;
+  vector<int> indices;
   glm::vec2 pos;
-  static const float width = 5.0f;
+  const float width = 1.0f;
 
-  void init(int x, int y);
-  void draw();
-  void update();
+  void init(float x, float y);
+  void create_vertices();
+  void draw() override;
+  void update() override;
 
  
 };

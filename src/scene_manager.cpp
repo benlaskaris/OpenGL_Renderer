@@ -1,23 +1,5 @@
 #include "scene_manager.h"
 
-// static void APIENTRY openglCallbackFunction(
-//   GLenum source,
-//   GLenum type,
-//   GLuint id,
-//   GLenum severity,
-//   GLsizei length,
-//   const GLchar* message,
-//   const void* userParam) {
-//   (void)source; (void)type; (void)id;
-//   (void)severity; (void)length; (void)userParam;
-//   fprintf(stderr, "%s\n", message);
-//   if (severity==GL_DEBUG_SEVERITY_HIGH) {
-//     fprintf(stderr, "Aborting...\n");
-//     abort();
-//   }
-// }
-
-
 
 // PRIVATE
 std::string SceneManager::get_shader_dir() {
@@ -43,7 +25,7 @@ void SceneManager::init_window() {
     glfwWindowHint ( GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 
-    window = glfwCreateWindow ( 1000, 700, "Hello OpenGL", nullptr, nullptr);
+    window = glfwCreateWindow (WINDOW_WIDTH, WINDOW_HEIGHT, "Hello OpenGL", nullptr, nullptr);
 
     if( window  == nullptr){
         std::cerr << "Failed to create GLFW window"<<std::endl;
@@ -74,7 +56,7 @@ void SceneManager::create_shader() {
   const char* v_path = vert_path.c_str();
   const char* f_path = frag_path.c_str();
 
-  stones_shader.create(v_path, f_path);
+  basic_shader.create(v_path, f_path);
         
 }
 
@@ -85,9 +67,31 @@ void SceneManager::create_objects() {
   // stones.push_back(test1);
 }
 
+void SceneManager::create_matrices() {
+  ModelMatrix = {
+    1.0f, 0.0f, 0.0f, 0.0f,
+    0.0f, 1.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 1.0f, 0.0f,
+    0.0f, 0.0f, 0.0f, 1.0f,
+  };
+
+  ViewMatrix = {
+    1.0f, 0.0f, 0.0f, 0.0f,
+    0.0f, 1.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 1.0f, 0.0f,
+    cameraPos.x, cameraPos.y, cameraPos.z, 1.0f,
+  };
+
+  ProjectionMatrix = glm::perspective(glm::radians(FOV), 
+                                                  WINDOW_WIDTH / WINDOW_HEIGHT, 
+                                                  0.1f, 
+                                                  1000.0f);
+
+}
+
 
 void SceneManager::render_frame() {
-  glUseProgram(stones_shader.program);
+  glUseProgram(basic_shader.program);
   // for (auto & i : stones) {
   //   i.draw();
   // }
@@ -106,6 +110,15 @@ void SceneManager::update_frame() {
 void SceneManager::process_input() {
     if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
+
+
+    if(glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
+      std::cout << "YOOOOOOOO\n";
+  }
+
+
+void SceneManager::update_shaders() {
+
 }
 
 

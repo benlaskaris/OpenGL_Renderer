@@ -1,6 +1,8 @@
-#include "stone.h"
+#include "quad.h"
 
-void Stone::init(float x, float y) {
+void Quad::init(float x, float y) {
+  // pos.push_back(x);
+  // pos.push_back(y);
   pos.x = x;
   pos.y = y;
 
@@ -9,37 +11,27 @@ void Stone::init(float x, float y) {
   glGenBuffers(1, &EBO);  
 }
 
-void Stone::create_vertices() {
+void Quad::create_vertices() {
   vertices = {
-    pos.x - width/2.0f, pos.y - width/2.0f, 0.0f, // bottom left
-    pos.x - width/2.0f, pos.y + width/2.0f, 0.0f, // top left
-    pos.x + width/2.0f, pos.y + width/2.0f, 0.0f, // top right
-    pos.x + width/2.0f, pos.y - width/2.0f, 0.0f // bottom right
+    pos[0] - width/2.0f, pos[1] - width/2.0f, 0.0f, // bottom left
+    pos[0] - width/2.0f, pos[1] + width/2.0f, 0.0f, // top left
+    pos[0] + width/2.0f, pos[1] + width/2.0f, 0.0f, // top right
+    pos[0] + width/2.0f, pos[1] - width/2.0f, 0.0f // bottom right
   };
-
-
-  // vertices = verts;
 
   indices = {
     0, 1, 2,
     0, 2, 3
   };
-
-  // indices = inds;
 }
 
-void Stone::draw() {
-  // std::cout << "Drawing" << std::endl;
+void Quad::draw() {
   glBindVertexArray(VAO);
   glEnableVertexAttribArray(0);  
-  glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0); // this is the line causing a bug 
-  // glDrawArrays(GL_TRIANGLES, 0, 3);
-
-
-
+  glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0); 
 }
 
-void Stone::update() {
+void Quad::update() {
   glBindVertexArray(VAO);
   glBindBuffer(GL_ARRAY_BUFFER, VBO);  
   glBufferData(GL_ARRAY_BUFFER, sizeof(float)* vertices.size(), vertices.data(), GL_STATIC_DRAW);

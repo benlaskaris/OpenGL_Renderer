@@ -16,7 +16,7 @@ include_directories(${OPENGL_INCLUDE_DIR} ${GLEW_INCLUDE_DIRS} ${PROJECT_SOURCE_
 add_executable(Renderer
     src/main.cpp
     src/scene_manager.cpp
-    src/stone.cpp
+    src/quad.cpp
     src/shader_program.cpp
 )
 

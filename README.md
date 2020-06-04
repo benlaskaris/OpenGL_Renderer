@@ -1,4 +1,4 @@
-# OpengGL
+# OpenGL
 
 Basic Renderer using OpenGL, GLEW and GLFW. Designed using the concept of a scenemanager, and drawable obejcts. Built and tested on OSX. Not yet cross-platform.
 

@@ -10,7 +10,7 @@ Basic Renderer using OpenGL, GLEW and GLFW. Designed using the concept of a scen
 -glm
 
 
-# To Build
+# To Build (Not currently working)
 
 1. clone the directory
 2. mkdir build
